@@ -15,7 +15,20 @@ class MemberOfParliamentProfile
   property :profession, String
   property :permanent_address, String
   property :present_address, String
-
+  
+  property :positions, Yaml
+  property :activity, Yaml
 
   belongs_to :member_of_parliament
+  
+  def positions= position_params
+    @positions = position_params.collect do |position_param|
+      Position.new position_param
+    end
+  end
+  
+  def activity= activity_param
+    @activity = Activity.new activity_param
+  end
+  
 end

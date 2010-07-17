@@ -7,12 +7,13 @@ class MpDataImporter
     puts "--Scraped #{no_of_mps_scraped} member of parliaments--"
     mps_by_state.each do |state|
       state[:mps].each do |mp|
-        MemberOfParliament.create(
-        :name => mp[:name], 
-        :constituency => Constituency.create(
-        :name => mp[:constituency], 
-        :state => State.find_or_create({:name => state[:name], :no_of_mps => state[:no_of_mps].to_i})),
-        :party => Party.find_or_create(:name => mp[:party])
+          MemberOfParliament.create(
+          :name => mp[:name], 
+          :constituency => Constituency.create(
+          :name => mp[:constituency], 
+          :state => State.find_or_create({:name => state[:name], :no_of_mps => state[:no_of_mps].to_i})),
+          :party => Party.find_or_create(:name => mp[:party]),
+          :member_of_parliament_profile => MemberOfParliamentProfile.create(mp[:profile])
         )
       end
     end
