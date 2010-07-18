@@ -20,7 +20,10 @@ class MemberOfParliamentsController < ApplicationController
   def select_filters
     constituency_ids = [params[:constituency_id]] unless params[:constituency_id].blank?
     constituency_ids = State.get(params[:state_id]).constituencies.collect{|constituency|constituency.id} unless params[:state_id].blank?
-    constituency_ids.blank? ? {} : {:constituency_id=> constituency_ids}
+    filters = {}
+    filters[:constituency_id] = constituency_ids unless constituency_ids.blank?
+    filters[:party_id] = params[:party_id] unless params[:party_id].blank?
+    filters
   end
   
 end

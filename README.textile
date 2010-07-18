@@ -9,15 +9,22 @@ h2. Formats
 * JSON
 
 h2. URLs
-* Get MPs
+* Get all MPs
 ** @GET /member_of_parliaments.xml@
 ** @GET /member_of_parliaments.json@
+* Get MPs by Constituency
+** @GET /constituencies/[constituency_id]/member_of_parliaments.xml@
+** @GET /constituencies/[constituency_id]/member_of_parliaments.json@
+* Get MPs by State
+** @GET /states/[state_id]/member_of_parliaments.xml@
+** @GET /states/[state_id]/member_of_parliaments.json@
 * Get MP
 ** @GET /member_of_parliaments/[mp_id].xml@
 ** @GET /member_of_parliaments/[mp_id].json@
-* Get MPs by Constituency
-* Get MPs by State
 * Get MPs by Party
+** @GET /parties/[party_id]/member_of_parliaments.xml@
+** @GET /parties/[party_id]/member_of_parliaments.json@
+
 * Search MP by Name
 * Get Constituencies
 * Get Constituencies By State
@@ -25,7 +32,6 @@ h2. URLs
 * Get Parties by State
 * Get States
 * Get States by Party
-
 
 h2. Todos
 

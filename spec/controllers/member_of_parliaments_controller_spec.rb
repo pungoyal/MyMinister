@@ -66,6 +66,20 @@ describe MemberOfParliamentsController do
       mps.first["name"].should == "Foo"
     end
   end
+
+  context "index with party specified" do
+    it "should return Members of Parliament of specified state" do
+      party = Factory.create(:party)
+      mp_in_party = Factory.create(:member_of_parliament, :name => "Foo" , :party => party)
+      mp_of_another_party = Factory.create(:member_of_parliament, :name => "Bar", :party => Factory.create(:party))
+      
+      get :index, :party_id => party.id, :format => :json
+      
+      mps = ActiveSupport::JSON.decode(response.body)
+      mps.should have(1).thing
+      mps.first["name"].should == "Foo"
+    end
+  end
   
   context "show" do
     it "should return the specified Member Of Parliament as json" do
