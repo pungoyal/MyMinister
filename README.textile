@@ -28,9 +28,6 @@ h2. URLs
 ** @GET /search/[mp|party|constituency]/[name match].xml@
 ** @GET /search/[mp|party|constituency]/[name match].json@
 
-h2. Developer Information
-* Run @rake data_import:start@ to import MP information to DB.
-
 h2. Todo
 * Get all Constituencies
 * Get Constituencies By State
@@ -40,3 +37,5 @@ h2. Todo
 * Get States by Party
 * Return 404 when client supplies bad data, eg. unsupported format, or an id which does not exist
 
+h2. Developer Information
+* Run @rake data_import:start@ to import MP information to DB.
