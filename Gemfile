@@ -15,9 +15,11 @@ gem 'dm-timestamps'
 gem 'dm-migrations'
 gem 'dm-observer'
 gem 'dm-rails'
+gem 'dm-serializer'
 gem 'rails3-generators'
 
 group :test, :development do
+  gem 'dm-transactions'
   gem 'rspec', '>= 2.0.0.beta.17'
   gem "rspec-rails", ">= 2.0.0.beta.17"
   gem 'factory_girl_rails'

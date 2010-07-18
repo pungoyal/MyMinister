@@ -38,7 +38,7 @@ class MPDetailScraper
     puts "Importing: #{url}"
     mp_detail = parse_mp_bio doc
     mp_detail[:positions] = parse_mp_positions doc
-    mp_detail[:activities] = parse_mp_activities doc
+    mp_detail[:activity] = parse_mp_activities doc
     mp_detail
   end
   
@@ -58,7 +58,7 @@ class MPDetailScraper
     mp_position_elements = doc.css('table#ctl00_ContPlaceHolderMain_Bioprofile1_Datagrid3 table tr')
     mp_position_elements.inject([]) do |mp_positions, element|
       rows = element.css('td')
-      mp_positions << {:period => rows.first.text.strip, :position => rows.last.text.strip}
+      mp_positions << {:period => rows.first.text.strip, :name => rows.last.text.strip}
     end
   end
 
