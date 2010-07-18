@@ -4,5 +4,5 @@ class Constituency
   property :name, String, :required => true
   
   belongs_to :state
-  has 1, :member_of_parliament
+  has 1, :mp
 end

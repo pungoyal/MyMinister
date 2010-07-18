@@ -1,4 +1,4 @@
-class MemberOfParliamentProfile
+class MpProfile
   include DataMapper::Resource
 
   property :id, Serial
@@ -19,7 +19,7 @@ class MemberOfParliamentProfile
   property :positions, Yaml
   property :activity, Yaml
 
-  belongs_to :member_of_parliament
+  belongs_to :mp
   
   def positions= position_params
     @positions = position_params.collect do |position_param|

@@ -10,20 +10,20 @@ h2. Formats
 
 h2. URLs
 * Get all MPs
-** @GET /member_of_parliaments.xml@
-** @GET /member_of_parliaments.json@
+** @GET /mps.xml@
+** @GET /mps.json@
 * Get MPs by Constituency
-** @GET /constituencies/[constituency_id]/member_of_parliaments.xml@
-** @GET /constituencies/[constituency_id]/member_of_parliaments.json@
+** @GET /constituencies/[constituency_id]/mps.xml@
+** @GET /constituencies/[constituency_id]/mps.json@
 * Get MPs by State
-** @GET /states/[state_id]/member_of_parliaments.xml@
-** @GET /states/[state_id]/member_of_parliaments.json@
+** @GET /states/[state_id]/mps.xml@
+** @GET /states/[state_id]/mps.json@
 * Get MP
-** @GET /member_of_parliaments/[mp_id].xml@
-** @GET /member_of_parliaments/[mp_id].json@
+** @GET /mps/[mp_id].xml@
+** @GET /mps/[mp_id].json@
 * Get MPs by Party
-** @GET /parties/[party_id]/member_of_parliaments.xml@
-** @GET /parties/[party_id]/member_of_parliaments.json@
+** @GET /parties/[party_id]/mps.xml@
+** @GET /parties/[party_id]/mps.json@
 * Search MPs, Parties, Constituencies, States by Name
 ** @GET /search/[mp|party|constituency]/:name.xml@
 ** @GET /search/[mp|party|constituency]/:name.json@

@@ -4,7 +4,7 @@ class Party
   property :name, String
   property :id, Serial
   
-  has n, :member_of_parliaments
+  has n, :mps
   
   def self.find_or_create party_params
     party = Party.first(:name => party_params[:name])

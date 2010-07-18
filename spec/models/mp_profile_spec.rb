@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe MemberOfParliamentProfile do
+describe MpProfile do
   context 'attributes' do
     it "should save and load" do
       params = {:fathers_name => "Late Shri Rajesh Pilot", 
@@ -9,7 +9,7 @@ describe MemberOfParliamentProfile do
                 :activity => {:sports_and_clubs => 'Golf', :countries_visited => 'SriLanka'}
                }
       
-      profile = MemberOfParliamentProfile.create params
+      profile = MpProfile.create params
       
       profile = profile.reload
       

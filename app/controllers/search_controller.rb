@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
   SEARCH_TYPES = {
-    :mp => "member_of_parliament",
+    :mp => "mp",
     :party => "party",
     :constituency => "constituency",
     :state => "state"

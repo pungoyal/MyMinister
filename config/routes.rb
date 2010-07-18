@@ -1,15 +1,15 @@
 Myminister::Application.routes.draw do |map|
   
-  resources :member_of_parliaments, :only => [:index, :show]
+  resources :mps, :only => [:index, :show]
   resources :constituencies do
-    resources :member_of_parliaments, :only => [:index]
+    resources :mps, :only => [:index]
   end
   resources :states do
-    resources :member_of_parliaments, :only => [:index]
+    resources :mps, :only => [:index]
   end
   
   resources :parties do
-    resources :member_of_parliaments, :only => [:index]
+    resources :mps, :only => [:index]
   end
   
   match 'search/:type/:name' => 'search#index'

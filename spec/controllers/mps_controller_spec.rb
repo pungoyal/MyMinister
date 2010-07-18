@@ -2,12 +2,12 @@ require 'csv' #Hack for making dm-serializer behave
 
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe MemberOfParliamentsController do
+describe MpsController do
   
   context "index" do
     it "should return all Members Of Parliament in json format" do
-      mp_one = Factory.create(:member_of_parliament, :name => "Foo")
-      mp_two = Factory.create(:member_of_parliament, :name => "Bar")      
+      mp_one = Factory.create(:mp, :name => "Foo")
+      mp_two = Factory.create(:mp, :name => "Bar")      
 
       get :index, :format => :json
       
@@ -20,12 +20,12 @@ describe MemberOfParliamentsController do
     end
     
     it "should return all Members Of Parliament in xml format" do
-      mp_one = Factory.create(:member_of_parliament, :name => "Foo")
-      mp_two = Factory.create(:member_of_parliament, :name => "Bar")      
+      mp_one = Factory.create(:mp, :name => "Foo")
+      mp_two = Factory.create(:mp, :name => "Bar")      
       
       get :index, :format => :xml
       
-      mps = Hash.from_xml(response.body)["member_of_parliaments"]
+      mps = Hash.from_xml(response.body)["mps"]
       
       mps.should have(2).things
       mps.first["id"].should == mp_one.id
@@ -39,8 +39,8 @@ describe MemberOfParliamentsController do
   context "index with constituency specified" do
     it "should return Members of Parliament of specified constituency" do
       constituency = Factory.create(:constituency)
-      mp_in_constituency = Factory.create(:member_of_parliament, :name => "Foo", :constituency => constituency)
-      mp_of_another_constituency = Factory.create( :member_of_parliament, 
+      mp_in_constituency = Factory.create(:mp, :name => "Foo", :constituency => constituency)
+      mp_of_another_constituency = Factory.create( :mp, 
                                                    :name => "Bar", 
                                                    :constituency => Factory.create(:constituency))
       
@@ -56,8 +56,8 @@ describe MemberOfParliamentsController do
     it "should return Members of Parliament of specified state" do
       state = Factory.create(:state)
       constituency = Factory.create(:constituency, :state => state)
-      mp_in_state = Factory.create(:member_of_parliament, :name => "Foo" , :constituency => constituency)
-      mp_of_another_state = Factory.create(:member_of_parliament, :name => "Bar", :constituency => Factory.create(:constituency))
+      mp_in_state = Factory.create(:mp, :name => "Foo" , :constituency => constituency)
+      mp_of_another_state = Factory.create(:mp, :name => "Bar", :constituency => Factory.create(:constituency))
       
       get :index, :state_id => state.id, :format => :json
       
@@ -70,8 +70,8 @@ describe MemberOfParliamentsController do
   context "index with party specified" do
     it "should return Members of Parliament of specified state" do
       party = Factory.create(:party)
-      mp_in_party = Factory.create(:member_of_parliament, :name => "Foo" , :party => party)
-      mp_of_another_party = Factory.create(:member_of_parliament, :name => "Bar", :party => Factory.create(:party))
+      mp_in_party = Factory.create(:mp, :name => "Foo" , :party => party)
+      mp_of_another_party = Factory.create(:mp, :name => "Bar", :party => Factory.create(:party))
       
       get :index, :party_id => party.id, :format => :json
       
@@ -83,7 +83,7 @@ describe MemberOfParliamentsController do
   
   context "show" do
     it "should return the specified Member Of Parliament as json" do
-      mp = Factory.create(:member_of_parliament, :name => "Foo")
+      mp = Factory.create(:mp, :name => "Foo")
       get :show, :id => mp.id, :format => :json
       
       mp_response = ActiveSupport::JSON.decode(response.body)
@@ -96,10 +96,10 @@ describe MemberOfParliamentsController do
     end
     
     it "should return the specified Member of Parliament as xml" do
-      mp = Factory.create(:member_of_parliament, :name => "Foo")
+      mp = Factory.create(:mp, :name => "Foo")
       get :show, :id => mp.id, :format => :xml
       
-      mp_response = Hash.from_xml(response.body)["member_of_parliament"]
+      mp_response = Hash.from_xml(response.body)["mp"]
 
       mp_response["name"].should == mp.name
       mp_response["party_id"].should == mp.party_id

@@ -3,9 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe SearchController do
   context "search by name" do
     it "should list when search type is MP" do
-      mp_one = Factory.create(:member_of_parliament, :name => "FooBar")
-      mp_two = Factory.create(:member_of_parliament, :name => "BarBaz")
-      mp_three = Factory.create(:member_of_parliament, :name => "BazFoo")
+      mp_one = Factory.create(:mp, :name => "FooBar")
+      mp_two = Factory.create(:mp, :name => "BarBaz")
+      mp_three = Factory.create(:mp, :name => "BazFoo")
       
       get :index, :type => SearchController::SEARCH_TYPES[:mp], :name => "Bar", :format => :json
 
