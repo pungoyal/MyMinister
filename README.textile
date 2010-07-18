@@ -24,16 +24,15 @@ h2. URLs
 * Get MPs by Party
 ** @GET /parties/[party_id]/member_of_parliaments.xml@
 ** @GET /parties/[party_id]/member_of_parliaments.json@
+* Search MPs, Parties, Constituencies, States by Name
+** @GET /search/[mp|party|constituency]/:name.xml@
+** @GET /search/[mp|party|constituency]/:name.json@
 
-* Search MP by Name
-* Get Constituencies
+h2. Todo
+* Get all Constituencies
 * Get Constituencies By State
-* Get Parties
+* Get all Parties
 * Get Parties by State
-* Get States
+* Get all States
 * Get States by Party
-
-h2. Todos
-
 * Return 404 when client supplies bad data, eg. unsupported format, or an id which does not exist
- 

@@ -11,6 +11,8 @@ Myminister::Application.routes.draw do |map|
   resources :parties do
     resources :member_of_parliaments, :only => [:index]
   end
+  
+  match 'search/:type/:name' => 'search#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
