@@ -1,4 +1,4 @@
-h1. API
+h1. MyMinister
 
 h2. Description
 
@@ -25,8 +25,11 @@ h2. URLs
 ** @GET /parties/[party_id]/mps.xml@
 ** @GET /parties/[party_id]/mps.json@
 * Search MPs, Parties, Constituencies, States by Name
-** @GET /search/[mp|party|constituency]/:name.xml@
-** @GET /search/[mp|party|constituency]/:name.json@
+** @GET /search/[mp|party|constituency]/[name match].xml@
+** @GET /search/[mp|party|constituency]/[name match].json@
+
+h2. Developer Information
+* Run @rake data_import:start@ to import MP information to DB.
 
 h2. Todo
 * Get all Constituencies
@@ -36,3 +39,4 @@ h2. Todo
 * Get all States
 * Get States by Party
 * Return 404 when client supplies bad data, eg. unsupported format, or an id which does not exist
+
