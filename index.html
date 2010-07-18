@@ -33,10 +33,6 @@
     font-size: 65px;
   }
   
-  h2 {
-    font-size: 28px;
-  }
-  
   h3 {
     border-bottom:4px double #CCCCCC;
     border-top:4px double #CCCCCC;
@@ -63,17 +59,28 @@
   
   #information li {
     float: left;
-    width: 25%;
+    width: 33%;
     text-align: center;
   }
   
-  #information a:hover {
+  #information li a {
+    font-size: 30px;
+    margin: 10px;
+  }
+  
+  a:hover {
     color: #FF0000;
   }
   
-  #more-information {
-    
-  }  
+  #footer {
+    text-align: center;
+    margin-top: 25px;
+  }
+  
+  #footer a{
+    font-size: 8px;
+    text-transform: uppercase;
+  }
   </style>
 
 </head>
@@ -91,36 +98,24 @@
     <div id='information'>
       <ul>
         <li>
-          <a href="#">
-            <h2>
-              # Motivation
-            </h2>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <h2>
+          <a href="javascript:void(0)" onclick="window.open('http://github.com/akshayrawat/MyMinister#readme')">
               # Documentation
-            </h2>
           </a>
         </li>
         <li>
-          <a href="#">
-            <h2>
-              # Contribute
-            </h2>
+          <a href="javascript:void(0)" onclick="window.open('http://github.com/akshayrawat/MyMinister')">
+              # Code
           </a>
         </li>
         <li>
-          <a href="#">
-            <h2>
+          <a href="mailto:myminister@activesphere.com?subject=Hi%20There!">
               # Contact
-            </h2>
           </a>
         </li>
       </ul>
-      <div id="more-information">
-      </div>
+    </div>
+    <div id='footer'>
+      <a href="javascript:void(0)" onclick="window.open('http://www.activesphere.com')">An ActiveSphere Initiative</a>
     </div>
   </div>
 </body>
