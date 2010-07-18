@@ -1,0 +1,19 @@
+h1. API
+
+h2. Description
+
+A REST API to access members of parliament information. 
+
+h2. Formats
+* XML
+* JSON
+
+h2. URLs
+* Get MPs
+* Get MPs by State
+* Get MPs by Party
+* Get MPs by Constituency
+* Get MP
+* Get Constituencies By State
+* Get Parties by State
+* Get States by Parties
