@@ -8,6 +8,10 @@ h2. Formats
 * XML
 * JSON
 
+h2. Current Status
+
+The application will be deployed shortly. The host for API access will be coming up at @api.myminister.info@
+
 h2. URLs
 * Get all MPs
 ** @GET /mps.xml@
