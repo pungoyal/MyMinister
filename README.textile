@@ -2,7 +2,7 @@ h1. API
 
 h2. Description
 
-A REST API to access members of parliament information. 
+A fast REST API to access information on Members of Parliament.
 
 h2. Formats
 * XML
@@ -10,10 +10,24 @@ h2. Formats
 
 h2. URLs
 * Get MPs
+** @GET /member_of_parliaments.xml@
+** @GET /member_of_parliaments.json@
+* Get MP
+** @GET /member_of_parliaments/[mp_id].xml@
+** @GET /member_of_parliaments/[mp_id].json@
+* Get MPs by Constituency
 * Get MPs by State
 * Get MPs by Party
-* Get MPs by Constituency
-* Get MP
+* Search MP by Name
+* Get Constituencies
 * Get Constituencies By State
+* Get Parties
 * Get Parties by State
-* Get States by Parties
+* Get States
+* Get States by Party
+
+
+h2. Todos
+
+* Return 404 when client supplies bad data, eg. unsupported format, or an id which does not exist
+ 

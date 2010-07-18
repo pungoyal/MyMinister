@@ -1,7 +1,7 @@
 class MemberOfParliamentsController < ApplicationController
 
   def index
-    mps = MemberOfParliament.all
+    mps = MemberOfParliament.all(select_filters)
     respond_to do |format|
       format.xml {render :xml => mps.to_xml(:only => [:id, :name])}
       format.json {render :json => mps.to_json(:only => [:id, :name])}
@@ -15,5 +15,12 @@ class MemberOfParliamentsController < ApplicationController
       format.json {render :json => mp.to_json(:methods=> [:party, :constituency])}
     end
   end
-
+  
+  private 
+  def select_filters
+    constituency_ids = [params[:constituency_id]] unless params[:constituency_id].blank?
+    constituency_ids = State.get(params[:state_id]).constituencies.collect{|constituency|constituency.id} unless params[:state_id].blank?
+    constituency_ids.blank? ? {} : {:constituency_id=> constituency_ids}
+  end
+  
 end

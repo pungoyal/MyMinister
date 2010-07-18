@@ -1,6 +1,12 @@
 Myminister::Application.routes.draw do |map|
   
   resources :member_of_parliaments, :only => [:index, :show]
+  resources :constituencies do
+    resources :member_of_parliaments, :only => [:index]
+  end
+  resources :states do
+    resources :member_of_parliaments, :only => [:index]
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
