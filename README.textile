@@ -2,7 +2,7 @@ h1. MyMinister
 
 h2. Description
 
-A fast REST API to access information on Members of Parliament.
+A fast REST API to access information on Members of Parliament. "Directory of MPs":http://github.com/akshayrawat/DirectoryOfMPs is an example application based on this.
 
 h2. Formats
 * XML
