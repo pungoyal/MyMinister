@@ -66,13 +66,9 @@ class MPDetailScraper
     mp_activities = {}
     mp_activity_elements = doc.css('table#ctl00_ContPlaceHolderMain_Bioprofile1_Datagrid4 table tr')
     mp_activity_values= mp_activity_elements.collect{|element| element.text.strip}.select{|element| !element.empty?}
-    
     MP_DETAIL_ACTIVITIES.each do |key, value|
       mp_activities[key] = mp_activity_values[mp_activity_values.index(value)+1] unless mp_activity_values.index(value).nil?
     end
     mp_activities
   end
 end
-
-# MPDetailImporter.new.import "Biography.aspx?mpsno=4258"
-# MPDetailImporter.new.import "Biography.aspx?mpsno=4258"

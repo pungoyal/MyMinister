@@ -10,7 +10,6 @@ describe MpProfile do
                }
       
       profile = MpProfile.create params
-      
       profile = profile.reload
       
       profile.fathers_name.should == "Late Shri Rajesh Pilot"

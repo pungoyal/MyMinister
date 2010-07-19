@@ -40,9 +40,8 @@ class MpDataScraper
         :constituency  => mp_elements[1].text.strip,
         :name  =>  mp_elements[2].text.strip,
         :party  => mp_elements[3].text.strip,
-        :profile => MPDetailScraper.new.import(mp_elements[2].css('a').first['href'])
+        :mp_profile => MPDetailScraper.new.import(mp_elements[2].css('a').first['href'])
       }
     end
   end
-  
 end
