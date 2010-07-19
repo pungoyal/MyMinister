@@ -10,7 +10,7 @@ h2. Formats
 
 h2. Current Status
 
-The application will be deployed shortly. The host for API access will be coming up at @api.myminister.info@
+The API is hosted at @http://api.myminister.info@. Access it like @http://api.myminister.info/[rest url]@. eg. @http://api.myminister.info/mps.xml@
 
 h2. URLs
 * Get all MPs
