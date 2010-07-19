@@ -85,7 +85,7 @@ describe MpsController do
   
   context "show" do
     it "should return the specified Member Of Parliament as json" do
-      mp = Factory.create(:mp, :name => "Foo")
+      mp = Factory.create(:mp, :name => "Foo", :mp_profile => MpProfile.create(:fathers_name => "foobar"))
       get :show, :id => mp.id, :format => :json
       
       mp_response = ActiveSupport::JSON.decode(response.body)
@@ -95,10 +95,11 @@ describe MpsController do
       mp_response["party"]["name"].should == mp.party.name
       mp_response["constituency_id"].should == mp.constituency_id
       mp_response["constituency"]["name"].should == mp.constituency.name
+      mp_response["mp_profile"]["fathers_name"].should == mp.mp_profile.fathers_name
     end
     
     it "should return the specified Member of Parliament as xml" do
-      mp = Factory.create(:mp, :name => "Foo")
+      mp = Factory.create(:mp, :name => "Foo", :mp_profile => MpProfile.create(:fathers_name => "foobar"))
       get :show, :id => mp.id, :format => :xml
       
       mp_response = Hash.from_xml(response.body)["mp"]
@@ -108,6 +109,7 @@ describe MpsController do
       mp_response["party"]["name"].should == mp.party.name
       mp_response["constituency_id"].should == mp.constituency_id
       mp_response["constituency"]["name"].should == mp.constituency.name
+      mp_response["mp_profile"]["fathers_name"].should == mp.mp_profile.fathers_name
     end
   end
 end

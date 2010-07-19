@@ -12,8 +12,8 @@ class MpsController < ApplicationController
     mp = Mp.first(select_show_filter)
     
     respond_to do |format|
-      format.xml {render :xml => mp.to_xml(:methods=> [:party, :constituency])}
-      format.json {render :json => mp.to_json(:methods=> [:party, :constituency])}
+      format.xml {render :xml => mp.to_xml(:methods=> [:party, :constituency, :mp_profile])}
+      format.json {render :json => mp.to_json(:methods=> [:party, :constituency, :mp_profile])}
     end
   end
   
