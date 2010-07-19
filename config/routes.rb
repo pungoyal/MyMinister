@@ -4,6 +4,7 @@ Myminister::Application.routes.draw do |map|
   resources :constituencies do
     resources :mps, :only => [:index]
   end
+  
   resources :states do
     resources :mps, :only => [:index]
   end
