@@ -30,16 +30,23 @@ The API is hosted at @http://api.myminister.info@. Access it like @http://api.my
 * Search MPs, Parties, Constituencies, States by Name
 ** @GET /search/[mp|party|constituency]/[name match].xml@
 ** @GET /search/[mp|party|constituency]/[name match].json@
+* Get all States and Union Territories
+** @GET /states.xml@
+** @GET /states.json@
+* Get all Constituencies
+** @GET /constituencies.xml@
+** @GET /constituencies.json@
+* Get Constituencies By State
+** @GET /states/[state_id_]/constituencies.xml@
+** @GET /states/[state_id_]/constituencies.json@
 
 h2. Todo
 
 Coming Shortly 
 
-* Get all Constituencies
-* Get Constituencies By State
 * Get all Parties
 * Get Parties by State
-* Get all States
+
 * Get States by Party
 * Return 404 when client supplies bad data, eg. unsupported format, or an id which does not exist
 
