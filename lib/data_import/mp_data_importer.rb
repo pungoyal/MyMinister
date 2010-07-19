@@ -22,6 +22,7 @@ class MpDataImporter
   
   def verify
     raise "MemberOfParliament count expected to be 543 but was #{Mp.count}" unless Mp.count == 543
+    raise "MemberOfParliamentProfile count expected to be 543 but was #{MpProfile.count}" unless MpProfile.count == 543
     raise "Party count expected to be 38 but was #{Party.count}" unless Party.count == 38
     raise "Constituency count expected to be 543 but was #{Constituency.count}" unless Constituency.count == 543
     raise "State count expected to be 35 but was #{State.count}" unless State.count == 35
