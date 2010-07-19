@@ -55,7 +55,8 @@ describe MpsController do
     it "should return Members of Parliament of specified state" do
       state = Factory.create(:state)
       constituency = Factory.create(:constituency, :state => state)
-      mp_in_state = Factory.create(:mp, :name => "Foo" , :constituency => constituency)
+      party = Factory.create(:party)
+      mp_in_state = Factory.create(:mp, :name => "Foo" , :constituency => constituency, :party => party)
       mp_of_another_state = Factory.create(:mp, :name => "Bar", :constituency => Factory.create(:constituency))
       
       get :index, :state_id => state.id, :format => :json
@@ -63,6 +64,8 @@ describe MpsController do
       mps = ActiveSupport::JSON.decode(response.body)
       mps.should have(1).thing
       mps.first["name"].should == "Foo"
+      mps.first["constituency"]["name"] == constituency.name
+      mps.first["party"]["name"] == party.name
     end
   end
 

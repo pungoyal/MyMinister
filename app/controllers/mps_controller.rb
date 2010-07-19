@@ -3,8 +3,8 @@ class MpsController < ApplicationController
   def index
     mps = Mp.all(select_filters)
     respond_to do |format|
-      format.xml {render :xml => mps.to_xml(:only => [:id, :name])}
-      format.json {render :json => mps.to_json(:only => [:id, :name])}
+      format.xml {render :xml => mps.to_xml(:only => [:id, :name], :methods=> [:party, :constituency])}
+      format.json {render :json => mps.to_json(:only => [:id, :name], :methods=> [:party, :constituency])}
     end
   end
 
