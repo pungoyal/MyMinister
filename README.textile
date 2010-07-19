@@ -8,11 +8,10 @@ h2. Formats
 * XML
 * JSON
 
-h2. Current Status
+h2. URLs
 
 The API is hosted at @http://api.myminister.info@. Access it like @http://api.myminister.info/[rest url]@. eg. @http://api.myminister.info/mps.xml@
 
-h2. URLs
 * Get all MPs
 ** @GET /mps.xml@
 ** @GET /mps.json@
@@ -33,6 +32,9 @@ h2. URLs
 ** @GET /search/[mp|party|constituency]/[name match].json@
 
 h2. Todo
+
+Coming Shortly 
+
 * Get all Constituencies
 * Get Constituencies By State
 * Get all Parties
@@ -41,5 +43,5 @@ h2. Todo
 * Get States by Party
 * Return 404 when client supplies bad data, eg. unsupported format, or an id which does not exist
 
-h2. Developer Information
+h2. Development Information
 * Run @rake data_import:start@ to import MP information to DB.
