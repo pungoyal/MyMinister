@@ -36,19 +36,18 @@ describe MpsController do
     
   end
   
-  context "index with constituency specified" do
-    it "should return Members of Parliament of specified constituency" do
+  context "show with constituency specified" do
+    it "should return Member of Parliament for specified constituency" do
       constituency = Factory.create(:constituency)
       mp_in_constituency = Factory.create(:mp, :name => "Foo", :constituency => constituency)
       mp_of_another_constituency = Factory.create( :mp, 
                                                    :name => "Bar", 
                                                    :constituency => Factory.create(:constituency))
       
-      get :index, :constituency_id => constituency.id, :format => :json
+      get :show, :constituency_id => constituency.id, :format => :json
       
-      mps = ActiveSupport::JSON.decode(response.body)
-      mps.should have(1).thing
-      mps.first["name"].should == mp_in_constituency.name
+      mp_response = ActiveSupport::JSON.decode(response.body)
+      mp_response["name"].should == mp_in_constituency.name
     end
   end
 

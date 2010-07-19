@@ -2,7 +2,7 @@ Myminister::Application.routes.draw do |map|
   
   resources :mps, :only => [:index, :show]
   resources :constituencies do
-    resources :mps, :only => [:index]
+    resource :mp, :only => [:show]
   end
   
   resources :states do

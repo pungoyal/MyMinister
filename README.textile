@@ -15,9 +15,9 @@ The API is hosted at @http://api.myminister.info@. Access it like @http://api.my
 * Get all MPs
 ** @GET /mps.xml@
 ** @GET /mps.json@
-* Get MPs by Constituency
-** @GET /constituencies/[constituency_id]/mps.xml@
-** @GET /constituencies/[constituency_id]/mps.json@
+* Get MP by Constituency
+** @GET /constituencies/[constituency_id]/mp.xml@
+** @GET /constituencies/[constituency_id]/mp.json@
 * Get MPs by State
 ** @GET /states/[state_id]/mps.xml@
 ** @GET /states/[state_id]/mps.json@
