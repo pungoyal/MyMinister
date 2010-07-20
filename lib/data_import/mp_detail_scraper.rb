@@ -32,6 +32,10 @@ class MPDetailScraper
     :other_information => "Other Information"
   }
   
+  MP_EMAIL = {
+    :email => "Email Address :"
+  }
+  
   def import mp_param
     url = MP_DETAIL_URL + mp_param
     doc = Nokogiri::HTML(open(url))
@@ -51,8 +55,13 @@ class MPDetailScraper
       mp_detail_value = mp_detail_label_and_value.last.gsub(/\s+/, " ").strip if mp_detail_label_and_value.size == 2
       mp_detail[element_key] = mp_detail_value if mp_detail_value
     end
+    mp_email_node = doc.css('table#ctl00_ContPlaceHolderMain_Bioprofile1_Datagrid1 table tr').find{|d|d.text.strip.include?(MP_EMAIL[:email])}
+    if mp_email_node
+      mp_email_label_and_value = mp_email_node.to_s.split(MP_EMAIL[:email])
+      mp_detail[:email] = mp_email_label_and_value.last.gsub(/\s+/, " ").strip 
+    end
     mp_detail
-  end  
+  end
   
   def parse_mp_positions doc
     mp_position_elements = doc.css('table#ctl00_ContPlaceHolderMain_Bioprofile1_Datagrid3 table tr')
@@ -72,3 +81,5 @@ class MPDetailScraper
     mp_activities
   end
 end
+
+# p MPDetailScraper.new.import "Biography.aspx?mpsno=4367"

@@ -2,19 +2,20 @@ class MpProfile
   include DataMapper::Resource
 
   property :id, Serial
-  property :fathers_name, String
-  property :mothers_name, String
-  property :date_of_birth, String
-  property :place_of_birth, String
+  property :fathers_name, Text
+  property :mothers_name, Text
+  property :date_of_birth, Text
+  property :place_of_birth, Text
   property :martial_status, String
   property :date_of_marriage, String
-  property :spouse_name, String
+  property :spouse_name, Text
   property :no_of_sons, String
   property :no_of_daughters, String
-  property :educational_qualifications, String
-  property :profession, String
-  property :permanent_address, String
-  property :present_address, String
+  property :educational_qualifications, Text
+  property :profession, Text
+  property :permanent_address, Text
+  property :present_address, Text
+  property :email, Text
   
   property :positions, Yaml
   property :activity, Yaml
