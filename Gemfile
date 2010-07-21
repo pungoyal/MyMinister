@@ -15,6 +15,7 @@ gem 'dm-observer'
 gem 'dm-rails'
 gem 'dm-serializer'
 gem 'rails3-generators'
+gem 'sanitize'
 
 group :test, :development do
   gem 'dm-transactions'

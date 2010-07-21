@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
+require 'sanitize'
 
 class MPDetailScraper
 
@@ -53,12 +54,12 @@ class MPDetailScraper
       mp_detail_node_text = mp_detail_elements.find{|element| element.include?(element_label)}
       mp_detail_label_and_value = mp_detail_node_text.to_s.split(element_label)
       mp_detail_value = mp_detail_label_and_value.last.gsub(/\s+/, " ").strip if mp_detail_label_and_value.size == 2
-      mp_detail[element_key] = mp_detail_value if mp_detail_value
+      mp_detail[element_key] = Sanitize.clean(mp_detail_value) if mp_detail_value
     end
     mp_email_node = doc.css('table#ctl00_ContPlaceHolderMain_Bioprofile1_Datagrid1 table tr').find{|d|d.text.strip.include?(MP_EMAIL[:email])}
     if mp_email_node
       mp_email_label_and_value = mp_email_node.to_s.split(MP_EMAIL[:email])
-      mp_detail[:email] = mp_email_label_and_value.last.gsub(/\s+/, " ").strip 
+      mp_detail[:email] = Sanitize.clean(mp_email_label_and_value.last.gsub(/\s+/, " ").strip)
     end
     mp_detail
   end
@@ -67,7 +68,7 @@ class MPDetailScraper
     mp_position_elements = doc.css('table#ctl00_ContPlaceHolderMain_Bioprofile1_Datagrid3 table tr')
     mp_position_elements.inject([]) do |mp_positions, element|
       rows = element.css('td')
-      mp_positions << {:period => rows.first.text.strip, :name => rows.last.text.strip}
+      mp_positions << {:period => Sanitize.clean(rows.first.text.strip), :name => Sanitize.clean(rows.last.text.strip)}
     end
   end
 
@@ -76,10 +77,10 @@ class MPDetailScraper
     mp_activity_elements = doc.css('table#ctl00_ContPlaceHolderMain_Bioprofile1_Datagrid4 table tr')
     mp_activity_values= mp_activity_elements.collect{|element| element.text.strip}.select{|element| !element.empty?}
     MP_DETAIL_ACTIVITIES.each do |key, value|
-      mp_activities[key] = mp_activity_values[mp_activity_values.index(value)+1] unless mp_activity_values.index(value).nil?
+      mp_activities[key] = Sanitize.clean(mp_activity_values[mp_activity_values.index(value)+1]) unless mp_activity_values.index(value).nil?
     end
     mp_activities
   end
 end
 
-# p MPDetailScraper.new.import "Biography.aspx?mpsno=4367"
+p MPDetailScraper.new.import "Biography.aspx?mpsno=4024"
