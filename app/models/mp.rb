@@ -6,4 +6,8 @@ class Mp
   belongs_to :constituency
   
   has 1, :mp_profile
+  
+  def state_name
+    self.constituency.state.name
+  end
 end
