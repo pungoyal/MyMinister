@@ -33,8 +33,9 @@ class MPDetailScraper
     :other_information => "Other Information"
   }
   
-  MP_EMAIL = {
-    :email => "Email Address :"
+  MP_OTHER = {
+    :email => "Email Address :",
+    :photo => "Photo"
   }
   
   def import mp_param
@@ -56,11 +57,12 @@ class MPDetailScraper
       mp_detail_value = mp_detail_label_and_value.last.gsub(/\s+/, " ").strip if mp_detail_label_and_value.size == 2
       mp_detail[element_key] = Sanitize.clean(mp_detail_value) if mp_detail_value
     end
-    mp_email_node = doc.css('table#ctl00_ContPlaceHolderMain_Bioprofile1_Datagrid1 table tr').find{|d|d.text.strip.include?(MP_EMAIL[:email])}
+    mp_email_node = doc.css('table#ctl00_ContPlaceHolderMain_Bioprofile1_Datagrid1 table tr').find{|d|d.text.strip.include?(MP_OTHER[:email])}
     if mp_email_node
-      mp_email_label_and_value = mp_email_node.to_s.split(MP_EMAIL[:email])
+      mp_email_label_and_value = mp_email_node.to_s.split(MP_OTHER[:email])
       mp_detail[:email] = Sanitize.clean(mp_email_label_and_value.last.gsub(/\s+/, " ").strip)
     end
+    mp_detail[:photo] = doc.css("#ctl00_ContPlaceHolderMain_Bioprofile1_Image1").first['src']
     mp_detail
   end
   
@@ -83,4 +85,4 @@ class MPDetailScraper
   end
 end
 
-p MPDetailScraper.new.import "Biography.aspx?mpsno=4024"
+# p MPDetailScraper.new.import "Biography.aspx?mpsno=4024"

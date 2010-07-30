@@ -16,6 +16,7 @@ class MpProfile
   property :permanent_address, Text
   property :present_address, Text
   property :email, Text
+  property :photo, Text
   
   property :positions, Yaml
   property :activity, Yaml
