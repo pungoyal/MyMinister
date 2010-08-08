@@ -24,13 +24,13 @@ class MpProfile
   belongs_to :mp
   
   def positions= position_params
-    @positions = position_params.collect do |position_param|
+    attribute_set(:positions, position_params.collect do |position_param|
       Position.new position_param
-    end
+    end)
   end
   
   def activity= activity_param
-    @activity = Activity.new activity_param
+    attribute_set(:activity, Activity.new(activity_param))
   end
   
 end

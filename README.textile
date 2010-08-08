@@ -51,4 +51,4 @@ Coming Shortly
 * Return 404 when client supplies bad data, eg. unsupported format, or an id which does not exist
 
 h2. Development Information
-* Run @rake data_import:start@ to import MP information to DB.
+* Run @rake data:import@ to import MP information to DB.
