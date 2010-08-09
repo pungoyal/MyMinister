@@ -1,5 +1,7 @@
 class ConstituenciesController < ApplicationController
 
+  caches_page :index
+
   def index
     constituencies = Constituency.all(select_filters)
     respond_to do |format|

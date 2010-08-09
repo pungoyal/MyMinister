@@ -1,5 +1,7 @@
 class MpsController < ApplicationController
 
+  caches_page :index, :show
+
   def index
     mps = Mp.all(select_filters)
     respond_to do |format|

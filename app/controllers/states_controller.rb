@@ -1,4 +1,5 @@
 class StatesController < ApplicationController
+  caches_page :index
 
   def index
     states = ::State.all
