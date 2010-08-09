@@ -1,5 +1,5 @@
 class StatesController < ApplicationController
-  caches_page :index
+  after_filter :cache_action, :only => [:index]
 
   def index
     states = ::State.all

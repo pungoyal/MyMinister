@@ -1,6 +1,6 @@
 class MpsController < ApplicationController
 
-  caches_page :index, :show
+  after_filter :cache_action, :only => [:index, :show]
 
   def index
     mps = Mp.all(select_filters)

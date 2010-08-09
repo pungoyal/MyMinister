@@ -1,6 +1,6 @@
 class ConstituenciesController < ApplicationController
 
-  caches_page :index
+  after_filter :cache_action, :only => [:index]
 
   def index
     constituencies = Constituency.all(select_filters)
