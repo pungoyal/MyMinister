@@ -40,6 +40,11 @@ The API is hosted at @http://api.myminister.info@. Access it like @http://api.my
 ** @GET /states/[state_id_]/constituencies.xml@
 ** @GET /states/[state_id_]/constituencies.json@
 
+
+h2. DB Snapshot
+
+A snapshot of the db is at @RAILS_ROOT/data/snapshot.sqlite3@. Run @rake data:import@ to import fresh MP information to @RAILS_ROOT/data/test.sqlite3@
+
 h2. Todo
 
 Coming Shortly 
@@ -49,6 +54,3 @@ Coming Shortly
 
 * Get States by Party
 * Return 404 when client supplies bad data, eg. unsupported format, or an id which does not exist
-
-h2. Development Information
-* Run @rake data:import@ to import MP information to DB.

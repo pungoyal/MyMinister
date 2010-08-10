@@ -17,7 +17,7 @@ Myminister::Application.routes.draw do |map|
     resources :constituencies, :only => [:index]
   end
   
-  match 'search/:type/:name' => 'search#index'
+  match 'search/:type/:name.:format' => 'search#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
