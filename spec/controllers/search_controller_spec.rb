@@ -75,5 +75,14 @@ describe SearchController do
       search_results = ActiveSupport::JSON.decode(response.body)
       search_results.should be_empty
     end
+
+    it "should be limit result to 20 matches" do
+      22.times {Factory.create(:party, :name => "Bar")}
+      
+      get :index, :type => SearchController::SEARCH_TYPES[:party], :name => "Bar", :format => :json
+
+      search_results = ActiveSupport::JSON.decode(response.body)
+      search_results.should have(20).things
+    end
   end
 end
