@@ -47,10 +47,8 @@ A snapshot of the db is at @RAILS_ROOT/data/snapshot.sqlite3@. Run @rake data:im
 
 h2. Todo
 
-Coming Shortly 
-
-* Get all Parties
-* Get Parties by State
-
-* Get States by Party
-* Return 404 when client supplies bad data, eg. unsupported format, or an id which does not exist
+* Add PRS published data
+* Show that on Directory.MyMinister
+* API for badges
+* Badges App
+* Identify cabinet ministers
