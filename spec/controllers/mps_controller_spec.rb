@@ -88,8 +88,10 @@ describe MpsController do
       mp = Factory.create(:mp, 
                           :name => "Foo", 
                           :mp_profile => MpProfile.create(:fathers_name => "foobar"),
-                          :constituency => Factory.create(:constituency, :state => Factory.create(:state))
-                          )
+                          :mp_statistic => MpStatistic.create(:attendance => 100),
+                          :constituency => Factory.create(:constituency, 
+                                                          :state => Factory.create(:state, :state_statistic => StateStatistic.create(:attendance => 90.9))))
+                                                          
       get :show, :id => mp.id, :format => :json
       
       mp_response = ActiveSupport::JSON.decode(response.body)
@@ -100,15 +102,16 @@ describe MpsController do
       mp_response["constituency"]["name"].should == mp.constituency.name
       mp_response["state_name"].should == mp.constituency.state.name
       mp_response["mp_profile"]["fathers_name"].should == mp.mp_profile.fathers_name
+      mp_response["mp_statistic"]["attendance"].should == 100
     end
     
     it "should return the specified Member of Parliament as xml" do
       mp = Factory.create(:mp, 
                           :name => "Foo", 
                           :mp_profile => MpProfile.create(:fathers_name => "foobar"),
-                          :constituency => Factory.create(:constituency, :state => Factory.create(:state))
-                          )
-                          
+                          :mp_statistic => MpStatistic.create(:attendance => 100),
+                          :constituency => Factory.create(:constituency, 
+                          :state => Factory.create(:state, :state_statistic => StateStatistic.create(:attendance => 90.9))))
       get :show, :id => mp.id, :format => :xml
       
       mp_response = Hash.from_xml(response.body)["mp"]
@@ -120,6 +123,7 @@ describe MpsController do
       mp_response["constituency"]["name"].should == mp.constituency.name
       mp_response["state_name"].should == mp.constituency.state.name
       mp_response["mp_profile"]["fathers_name"].should == mp.mp_profile.fathers_name
+      mp_response["mp_statistic"]["attendance"].should == 100
     end
   end
 end
