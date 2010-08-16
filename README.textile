@@ -50,5 +50,5 @@ h2. Todo
 * Add PRS published data
 * Show that on Directory.MyMinister
 * API for badges
-* Badges App
+* Badges App 
 * Identify cabinet ministers 
