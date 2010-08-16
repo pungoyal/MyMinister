@@ -6,6 +6,7 @@ class State
   property :no_of_mps, Integer
   
   has n, :constituencies
+  has 1, :state_statistic
   
   def self.find_or_create state_params
     state = ::State.first(:name => state_params[:name])

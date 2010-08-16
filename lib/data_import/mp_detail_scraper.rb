@@ -85,4 +85,4 @@ class MPDetailScraper
   end
 end
 
-# p MPDetailScraper.new.import "Biography.aspx?mpsno=4024"
+# p MPDetailScraper.new.import "Biography.aspx?mpsno=438"
