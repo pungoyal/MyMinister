@@ -36,11 +36,12 @@ class PrsDataImporter
                            :questions => data[13].to_i, :attendance => data[14].delete("%").to_i})
                            
     constituency.state.update(:state_statistic => {:debates => data[20].to_f, :private_member_bills => data[21].to_f,
-                               :questions => data[22].to_f, :attendance => data[23].delete("%").to_f})
+                               :questions => data[22].to_f, :attendance => data[23].delete("%").to_f}) unless constituency.state.state_statistic
   end
   
   def verify
-    raise "verification failed: expected 543 MpStatistics, found #{MpStatistic.count}" if MpStatistic.count != 542
-    raise "verification failed: expected 543 StateStatistics, found #{StateStatistic.count}" if StateStatistic.count != 542
+    raise "verification failed: expected #{Mp.count} MpStatistics, found #{MpStatistic.count}" if MpStatistic.count != Mp.count
+    raise "verification failed: expected #{State.count} StateStatistics, found #{StateStatistic.count}" if StateStatistic.count != State.count
+    puts "--Import finished on #{Rails.env}--"
   end
 end
