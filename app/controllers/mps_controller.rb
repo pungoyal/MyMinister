@@ -6,7 +6,7 @@ class MpsController < ApplicationController
     mps = Mp.all(select_filters)
     respond_to do |format|
       format.xml {render :xml => mps.to_xml(:only => [:id, :name], :methods=> [:party, :constituency])}
-      format.json {render :json => mps.to_json(:only => [:id, :name], :methods=> [:party, :constituency])}
+      format.json {render :json => {:model => mps.to_json(:only => [:id, :name], :methods=> [:party, :constituency])}}
     end
   end
 
@@ -15,7 +15,7 @@ class MpsController < ApplicationController
     
     respond_to do |format|
       format.xml {render :xml => mp.to_xml(:methods=> [:party, :constituency, :mp_profile, :mp_statistic, :state_name])}
-      format.json {render :json => mp.to_json(:methods=> [:party, :constituency, :mp_profile, :mp_statistic, :state_name])}
+      format.json {render :json => {:mpProfile=> mp.to_json(:methods=> [:party, :constituency, :mp_profile, :mp_statistic, :state_name])}}
     end
   end
   

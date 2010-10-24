@@ -17,6 +17,7 @@ gem 'dm-serializer', '1.0.0'
 gem 'rails3-generators'
 gem 'sanitize'
 gem 'fastercsv'
+gem 'rack-contrib'
 
 group :test, :development do
   gem 'dm-transactions'
